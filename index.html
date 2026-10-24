@@ -592,6 +592,15 @@ br.br{display:inline}
 .rejilla>.rec.rec-taller:nth-child(5n+3){--pastel:#C9E2FF}
 .rejilla>.rec.rec-taller:nth-child(5n+4){--pastel:#FFCDB5}
 .rejilla>.rec.rec-taller:nth-child(5n+5){--pastel:#C9EED5}
+/* Ayuda: fila inferior (4, 5, 6) */
+@media (min-width:821px) and (min-height:521px){
+  .ay-2{grid-template-columns:minmax(calc(var(--u)*590),1.05fr) minmax(calc(var(--u)*345),.85fr) minmax(0,1.5fr)}
+  .a4 p{max-width:calc(var(--u)*255)}
+  .simbolos{right:auto;left:calc(var(--u)*276)}
+  .a6{padding:calc(var(--u)*9) calc(var(--u)*14) calc(var(--u)*10)}
+  .a6 .faq{gap:calc(var(--u)*5);margin-top:calc(var(--u)*4)}
+  .a6 .faq .fq{min-height:calc(var(--u)*34);padding-block:calc(var(--u)*2)}
+}
 </style>
 </head>
 <body>
@@ -1416,7 +1425,7 @@ const Vistas = {
           <button class="abre" type="button" data-guia="simbolos">${PLAY}Ver explicación</button></div>
         <div class="ac a5" data-tx="consejos mejor lector leer comprender disfrutar lectura"><div class="cab"><span class="num">5</span><h3>Consejos para<br>ser un mejor lector</h3></div>
           <p>Descubre recomendaciones<br class="br"> para comprender mejor<br class="br"> los textos y disfrutar<br class="br"> la lectura.</p><img class="art art-5" src="${IMG[`ayuda-5`]}" alt=""><button class="abre" type="button" data-guia="consejos">${PLAY}Ver consejos</button></div>
-        <div class="ac a6" id="cajaFaq" data-tx="preguntas frecuentes busco lectura guardo favorito cambiar usuario otro estudiante descargar imprimir taller"><div class="cab"><span class="num">6</span><h3>Preguntas frecuentes</h3></div>
+        <div class="ac a6" id="cajaFaq" data-tx="preguntas frecuentes busco lectura guardo favorito cambiar usuario otro estudiante descargar imprimir taller video no se reproduce internet"><div class="cab"><span class="num">6</span><h3>Preguntas frecuentes</h3></div>
           <div class="faq">${FAQ.map((f,i)=>`<button type="button" class="fq" data-faq="${i}">${f.q}</button>`).join('')}</div></div>
        </div>
       </div><p id="sinAyuda" class="oculto">No encontramos ayuda con esa palabra. Prueba con otra.</p>`;
@@ -1440,7 +1449,8 @@ const FAQ = [
   {q:'¿Cómo busco una lectura?', a:'Escribe en el buscador el título, un personaje o una palabra relacionada con la lectura. El repositorio mostrará los recursos que coincidan con lo que escribiste.'},
   {q:'¿Cómo guardo un favorito?', a:'Cuando una lectura o un video esté disponible, pulsa el corazón o el botón de favoritos de su tarjeta. Para volver a encontrarlo, entra en «Mis favoritos». Los favoritos se guardan en este navegador.'},
   {q:'¿Qué hago si aparece el nombre de otro estudiante al entrar?', a:'Pulsa el botón «Cambiar usuario» y escribe el código que te entregó tu docente. Así podrás ingresar con tu propio nombre y evitar que tu sesión se confunda con la de otro estudiante.'},
-  {q:'¿Puedo descargar o imprimir una lectura o un taller para resolverlo en papel?', a:'Cuando la lectura o el taller estén disponibles para descargar, pulsa el botón «Descargar» del recurso. Después, abre el archivo descargado para leerlo o imprimirlo. Si necesitas ayuda para imprimirlo, puedes pedírsela a tu docente o a un adulto.'}
+  {q:'¿Puedo descargar o imprimir una lectura o un taller para resolverlo en papel?', a:'Cuando la lectura o el taller estén disponibles para descargar, pulsa el botón «Descargar» del recurso. Después, abre el archivo descargado para leerlo o imprimirlo. Si necesitas ayuda para imprimirlo, puedes pedírsela a tu docente o a un adulto.'},
+  {q:'¿Qué hago si un video no se reproduce?', a:'Comprueba que tengas conexión a internet y vuelve a intentarlo. Si el video sigue sin funcionar, avisa a tu docente para que te ayude.'}
 ];
 
 /* Contenido de las guías de Ayuda */
