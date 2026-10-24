@@ -1,11 +1,11 @@
 # Cambios aplicados al repositorio
 
-- Se corrigieron las miniaturas de lecturas: el catálogo esperaba archivos JPG y el paquete original contenía imágenes PNG con nombres que no coincidían.
-- Se optimizaron las diez portadas de lectura a JPG de alta calidad para reducir el tamaño del repositorio.
-- Se crearon siete miniaturas de video a partir de fotogramas reales de los MP4, con tratamiento gráfico uniforme y botón visual de reproducción.
-- Se corrigieron los nombres y las rutas de los archivos para que coincidan exactamente, incluidas las mayúsculas y tildes relevantes en GitHub Pages.
-- Se añadió la duración real redondeada a las tarjetas de video.
-- Se reubicaron los metadatos de los MP4 al inicio del archivo sin volver a codificar el audio ni el video, para favorecer el inicio de reproducción web.
-- Se añadieron metadatos de página, favicon, `README.md`, `.nojekyll` y una lista de comprobación de publicación.
+- Se normalizaron los nombres de archivos dentro de `assets/` y `recursos/` para utilizar únicamente letras ASCII, números y guiones.
+- Se quitaron tildes, eñes, espacios y símbolos de los nombres de archivos usados en las rutas; los títulos visibles para estudiantes conservan la ortografía española.
+- Se actualizaron las referencias del catálogo HTML para apuntar a los nuevos nombres seguros.
+- Se conservaron las diez miniaturas de lectura, las siete miniaturas de video, los 20 PDF y los siete videos.
+- Se mantuvieron las mejoras de optimización web, favicon, metadatos, guía y comprobación de publicación.
 
-No se alteró el contenido de las lecturas ni de los talleres en PDF.
+Esta normalización evita que una codificación incorrecta de nombres dentro de ZIP o en el sistema de archivos impida que GitHub Pages encuentre las imágenes y otros recursos.
+
+No se cambió el contenido textual de las lecturas ni de los talleres PDF.

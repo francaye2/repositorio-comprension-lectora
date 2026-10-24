@@ -1,5 +1,8 @@
 # Repositorio de Comprensión Lectora · 2.º grado de primaria
 
+> **Importante sobre esta versión:** los nombres técnicos de imágenes, videos y PDF usan rutas sin tildes, eñes, espacios ni símbolos para evitar incompatibilidades de codificación. Los títulos que aparecen en la página siguen escritos correctamente en español. Al actualizar, sube la carpeta `assets/`, la carpeta `recursos/` y `index.html` juntos.
+
+
 Sitio web estático, pensado para abrirse en computador, tableta o teléfono. Incluye lecturas en PDF, talleres, videos con miniaturas, búsqueda por texto y favoritos guardados en el navegador.
 
 ## Contenido
