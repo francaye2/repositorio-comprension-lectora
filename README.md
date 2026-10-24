@@ -6,14 +6,7 @@ Sitio estático listo para publicarse con GitHub Pages. El archivo de entrada es
 
 - Comprensión literal: cinco lecturas y sus cinco talleres.
 - Comprensión inferencial: cinco lecturas y sus cinco talleres.
-- Videos: siete videos MP4 con miniaturas de vista previa, en este orden:
-  1. Consejos para leer y comprender un texto.
-  2. La cometa.
-  3. La pequeña luna y la lluvia.
-  4. La detective Susana.
-  5. La gallina Yina.
-  6. La gatita Catalina.
-  7. Pancho el glotón.
+- Videos: cinco videos MP4 con miniaturas de vista previa.
 - Las lecturas y sus talleres comparten la misma miniatura y el mismo nombre de presentación.
 - Los PDF se pueden abrir dentro del repositorio en una ventana emergente o descargar desde su tarjeta.
 - Los videos se reproducen dentro de una ventana emergente con controles del reproductor y no tienen botón de descarga en las tarjetas.
