@@ -548,6 +548,34 @@ br.br{display:inline}
 .rec .img.sin-img{background-image:none!important;background-color:#e7f2fc}
 .rec .img.sin-img::after{content:"📖";font-size:44px;display:grid;place-items:center;height:100%}
 .rec .sonda{display:none}
+/* Títulos centrados y fondos pastel alternados por tarjeta */
+.rec h4{text-align:center}
+.rec .cuerpo{justify-content:flex-start}
+.rec{--pastel:#C9E2FF;background:var(--pastel)}
+.rejilla>.rec:nth-child(5n+1){--pastel:#C9E2FF}
+.rejilla>.rec:nth-child(5n+2){--pastel:#C9EED5}
+.rejilla>.rec:nth-child(5n+3){--pastel:#FFE394}
+.rejilla>.rec:nth-child(5n+4){--pastel:#DDCCFF}
+.rejilla>.rec:nth-child(5n+5){--pastel:#FFCDB5}
+.rec .descargar{background:#f4f9ff;border-color:#5aa5ec}
+.rec .descargar:hover{background:#e3f0ff}
+.rec .tipo-recurso{text-align:center;justify-content:center}
+.panel-titulo.s-videos p,.s-videos p{max-width:calc(100% - calc(var(--u)*120));line-height:1.18;font-size:max(12px,calc(var(--u)*14.2))!important}
+.s-videos{min-height:calc(var(--u)*110);height:auto}
+/* Botones brillantes: morado (Abrir / Ver video) y coral (Descargar) */
+.rec .abrir,.rec .descargar{position:relative;overflow:hidden;isolation:isolate;border-radius:999px;box-sizing:border-box;font:800 clamp(13px,1.05vw,16px)/1.1 'Baloo 2','Nunito',sans-serif;letter-spacing:.01em;padding:10px 4px 11px;gap:0;transition:transform .12s,box-shadow .12s,filter .12s}
+.rec .abrir .ico-btn,.rec .descargar .ico-btn{display:none}
+.rec .abrir span,.rec .descargar span{position:relative;z-index:2}
+.rec .abrir::before,.rec .descargar::before{content:"";position:absolute;z-index:1;left:9%;top:11%;width:24%;height:30%;border-radius:50%;background:rgba(255,255,255,.34);transform:rotate(-14deg);pointer-events:none}
+.rec .abrir::after,.rec .descargar::after{content:"";position:absolute;z-index:1;left:38%;top:12%;width:48%;height:14%;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,.22),rgba(255,255,255,0));pointer-events:none}
+.rec .abrir{color:#fff;border:2.5px solid #4C0CCB;background:linear-gradient(180deg,#A25CF7 0%,#803BEA 42%,#6B25DE 100%);text-shadow:0 1px 0 rgba(76,12,203,.55);box-shadow:inset 0 2px 0 #C993FF,inset 0 -4px 0 rgba(76,12,203,.38),0 3px 0 #4C0CCB,0 6px 10px rgba(128,59,234,.35)}
+.rec .abrir:hover{filter:brightness(1.08) saturate(1.05);transform:translateY(-1px);background:linear-gradient(180deg,#A25CF7 0%,#803BEA 42%,#6B25DE 100%)}
+.rec .abrir:active{transform:translateY(2px);filter:brightness(.97);box-shadow:inset 0 2px 0 #C993FF,inset 0 -3px 0 rgba(76,12,203,.38),0 1px 0 #4C0CCB,0 2px 5px rgba(128,59,234,.35)}
+.rec .descargar{color:#12356B;border:2.5px solid #F26755;background:linear-gradient(180deg,#FFD9C6 0%,#FFC5A9 45%,#FFB394 100%);text-shadow:none;box-shadow:inset 0 2px 0 #FFE2D3,inset 0 -4px 0 rgba(242,103,85,.28),0 3px 0 #E4513F,0 6px 10px rgba(242,103,85,.30)}
+.rec .descargar:hover{filter:brightness(1.05) saturate(1.05);transform:translateY(-1px);background:linear-gradient(180deg,#FFD9C6 0%,#FFC5A9 45%,#FFB394 100%);border-color:#F26755}
+.rec .descargar:active{transform:translateY(2px);filter:brightness(.97);box-shadow:inset 0 2px 0 #FFE2D3,inset 0 -3px 0 rgba(242,103,85,.28),0 1px 0 #E4513F,0 2px 5px rgba(242,103,85,.3)}
+.rec .acciones-recurso{gap:8px;padding-bottom:3px}
+.rec .solo-video{margin-bottom:3px}
 </style>
 </head>
 <body>
@@ -1196,7 +1224,7 @@ function tarjetaRecurso(r){
     ? `<span class="tipo-recurso">Video${r.duracion ? ' · '+esc(r.duracion) : ''}</span>`
     : `<span class="estr" title="Nivel de dificultad: ${NIVELES_DIF[nivelDif(r)]}" role="img" aria-label="Nivel de dificultad: ${NIVELES_DIF[nivelDif(r)]} (${estrellas(nivelDif(r))})">${Array.from({length:nivelDif(r)},()=>`<img class="estr-img" src="${IMG['estrellas-1']}" alt="">`).join('')}</span>`;
   const botones = r.tipo==='video'
-    ? `<button class="abrir solo-video" type="button" data-abrir="${esc(r.id)}">Ver video</button>`
+    ? `<button class="abrir solo-video" type="button" data-abrir="${esc(r.id)}"><span>Ver video</span></button>`
     : `<div class="acciones-recurso"><button class="abrir" type="button" data-abrir="${esc(r.id)}"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 12S5.5 4.5 12 4.5 22.5 12 22.5 12 18.5 19.5 12 19.5 1.5 12 1.5 12z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg><span>Abrir</span></button><button class="descargar" type="button" data-descargar="${esc(r.id)}"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0-4.5-4.5M12 14l4.5-4.5M4 17v2.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V17" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Descargar</span></button></div>`;
   return `<article class="rec ${r.tipo==='video'?'rec-video':'rec-doc'}">${portada}
     <button class="fav" type="button" data-fav="${esc(r.id)}" aria-pressed="${fav}" aria-label="${fav?'Quitar de favoritos':'Guardar en favoritos'}">${CORAZON(fav)}</button>
@@ -1306,7 +1334,7 @@ const Vistas = {
     $('#contenido').innerHTML=v.html; $('#contenido').onclick=null; conectarColeccion('inferencial');
   },
   videos(){
-    const v=vistaColeccion('videos','Videos','Mira cuentos narrados, explicaciones y consejos para ser un mejor lector.','s-videos','Buscar video por título, personaje o tema…',[{id:'video'}]);
+    const v=vistaColeccion('videos','Videos','Disfruta pequeñas historias en video y, al terminar, responde unas preguntas para descubrir cuánto comprendiste. ¡Observa con atención y demuestra lo que aprendiste!','s-videos','Buscar video por título, personaje o tema…',[{id:'video'}]);
     $('#contenido').innerHTML=v.html; $('#contenido').onclick=null; conectarColeccion('videos');
   },
   favoritos(){
