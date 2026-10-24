@@ -601,6 +601,60 @@ br.br{display:inline}
   .a6 .faq{gap:calc(var(--u)*5);margin-top:calc(var(--u)*4)}
   .a6 .faq .fq{min-height:calc(var(--u)*34);padding-block:calc(var(--u)*2)}
 }
+
+
+/* ============================================================
+   AJUSTE FINAL DE AYUDA: símbolos próximos, fila equilibrada y FAQ visibles
+   Mantiene intactas las demás secciones y la paleta del repositorio.
+   ============================================================ */
+@media (min-width:821px) and (min-height:521px){
+  .ay-2{
+    grid-template-columns:minmax(calc(var(--u)*430),1.05fr) minmax(calc(var(--u)*310),.78fr) minmax(calc(var(--u)*450),1.35fr)!important;
+    column-gap:calc(var(--u)*10);
+  }
+  .ac.a4{
+    display:grid;
+    grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+    grid-template-rows:auto minmax(0,1fr) auto;
+    column-gap:calc(var(--u)*10);
+    align-content:stretch;
+  }
+  .ac.a4>.cab{grid-column:1;grid-row:1;align-self:start;min-width:0}
+  .ac.a4>p{
+    display:block!important;
+    grid-column:1;grid-row:2;
+    max-width:none;
+    margin:calc(var(--u)*7) 0 0;
+    line-height:1.35;
+    align-self:start;
+  }
+  .ac.a4>.simbolos{
+    position:static;
+    grid-column:2;grid-row:1/4;
+    width:100%;height:auto;min-width:0;min-height:0;
+    margin:0;padding:calc(var(--u)*10) calc(var(--u)*4);
+    align-self:center;justify-self:stretch;
+    box-sizing:border-box;
+  }
+  .ac.a4>.simbolos .s{min-width:0;gap:calc(var(--u)*3)}
+  .ac.a4>.simbolos .s img{height:calc(var(--u)*45);max-width:100%;margin-bottom:calc(var(--u)*2);object-fit:contain}
+  .ac.a4>.simbolos .s b{font-size:max(10.5px,calc(var(--u)*15));line-height:1.08}
+  .ac.a4>.simbolos .s span{font-size:max(9.5px,calc(var(--u)*12.5));line-height:1.1;overflow-wrap:normal}
+  .ac.a4>button.abre{grid-column:1;grid-row:3;align-self:start;margin:calc(var(--u)*7) 0 0;}
+
+  .a6{padding:calc(var(--u)*8) calc(var(--u)*12) calc(var(--u)*8)}
+  .a6 .cab{margin-bottom:calc(var(--u)*2)}
+  .a6 .faq{gap:calc(var(--u)*3);margin-top:calc(var(--u)*3);overflow:visible;min-height:0}
+  .a6 .faq .fq{
+    min-height:calc(var(--u)*27);
+    padding:calc(var(--u)*2) calc(var(--u)*26) calc(var(--u)*2) calc(var(--u)*8);
+    font-size:max(10.5px,calc(var(--u)*14));
+    line-height:1.1;
+    white-space:normal;
+  }
+}
+/* En viewports estrechos, conserva el comportamiento adaptable existente. */
+
 </style>
 </head>
 <body>
@@ -702,9 +756,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "Camilo examen evaluación historia Bolívar Turbaco escuela profesora Martha",
             "personaje": "Camilo, profesora Martha",
-            "imagen": "assets/miniaturas/El primer día de exámenes de Camilo.jpg",
+            "imagen": "assets/miniaturas/el-primer-dia-de-examenes-de-camilo.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-literal/lecturas/El primer día de exámenes de Camilo ★☆☆.pdf",
+            "src": "recursos/lectura-literal/lecturas/el-primer-dia-de-examenes-de-camilo.pdf",
             "nombreArchivo": "El primer día de exámenes de Camilo.pdf"
       },
       {
@@ -715,9 +769,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "taller Camilo examen evaluación historia Bolívar Turbaco escuela profesora Martha",
             "personaje": "Camilo, profesora Martha",
-            "imagen": "assets/miniaturas/El primer día de exámenes de Camilo.jpg",
+            "imagen": "assets/miniaturas/el-primer-dia-de-examenes-de-camilo.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-literal/talleres/El primer día de exámenes de Camilo ★☆☆.pdf",
+            "src": "recursos/lectura-literal/talleres/el-primer-dia-de-examenes-de-camilo.pdf",
             "nombreArchivo": "El primer día de exámenes de Camilo - Taller.pdf"
       },
       {
@@ -728,9 +782,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "Huila cafetales café Simón mono aullador don José campesino cosecha cerezas montaña",
             "personaje": "Simón, don José",
-            "imagen": "assets/miniaturas/El secreto de los cafetales del Huila.jpg",
+            "imagen": "assets/miniaturas/el-secreto-de-los-cafetales-del-huila.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-literal/lecturas/El secreto de los cafetales del Huila ★☆☆.pdf",
+            "src": "recursos/lectura-literal/lecturas/el-secreto-de-los-cafetales-del-huila.pdf",
             "nombreArchivo": "El secreto de los cafetales del Huila.pdf"
       },
       {
@@ -741,9 +795,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "taller Huila cafetales café Simón mono aullador don José campesino cosecha cerezas montaña",
             "personaje": "Simón, don José",
-            "imagen": "assets/miniaturas/El secreto de los cafetales del Huila.jpg",
+            "imagen": "assets/miniaturas/el-secreto-de-los-cafetales-del-huila.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-literal/talleres/El secreto de los cafetales del Huila ★☆☆.pdf",
+            "src": "recursos/lectura-literal/talleres/el-secreto-de-los-cafetales-del-huila.pdf",
             "nombreArchivo": "El secreto de los cafetales del Huila - Taller.pdf"
       },
       {
@@ -754,9 +808,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "gallina Josefina lombriz huerta maíz Cundinamarca tierra plantas",
             "personaje": "Josefina",
-            "imagen": "assets/miniaturas/La gallina Josefina y la lombriz.jpg",
+            "imagen": "assets/miniaturas/la-gallina-josefina-y-la-lombriz.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-literal/lecturas/La gallina Josefina y la lombriz ★☆☆.pdf",
+            "src": "recursos/lectura-literal/lecturas/la-gallina-josefina-y-la-lombriz.pdf",
             "nombreArchivo": "La gallina Josefina y la lombriz.pdf"
       },
       {
@@ -767,9 +821,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "taller gallina Josefina lombriz huerta maíz Cundinamarca tierra plantas",
             "personaje": "Josefina",
-            "imagen": "assets/miniaturas/La gallina Josefina y la lombriz.jpg",
+            "imagen": "assets/miniaturas/la-gallina-josefina-y-la-lombriz.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-literal/talleres/La gallina Josefina y la lombriz ★☆☆.pdf",
+            "src": "recursos/lectura-literal/talleres/la-gallina-josefina-y-la-lombriz.pdf",
             "nombreArchivo": "La gallina Josefina y la lombriz - Taller.pdf"
       },
       {
@@ -780,9 +834,9 @@ const CONFIG = {
             "dificultad": 2,
             "tema": "Martín abuelo Ramón rescate peces alevines quebrada Cálamo Guamal Pitalito Huila naturaleza",
             "personaje": "Martín, abuelo Ramón",
-            "imagen": "assets/miniaturas/El rescate de los alevines en la quebrada Cálamo.jpg",
+            "imagen": "assets/miniaturas/el-rescate-de-los-alevines-en-la-quebrada-calamo.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-literal/lecturas/El rescate de los alevines en la quebrada Cálamo ★★☆.pdf",
+            "src": "recursos/lectura-literal/lecturas/el-rescate-de-los-alevines-en-la-quebrada-calamo.pdf",
             "nombreArchivo": "El rescate de los alevines en la quebrada Cálamo.pdf"
       },
       {
@@ -793,9 +847,9 @@ const CONFIG = {
             "dificultad": 2,
             "tema": "taller Martín abuelo Ramón rescate peces alevines quebrada Cálamo Guamal Pitalito Huila naturaleza",
             "personaje": "Martín, abuelo Ramón",
-            "imagen": "assets/miniaturas/El rescate de los alevines en la quebrada Cálamo.jpg",
+            "imagen": "assets/miniaturas/el-rescate-de-los-alevines-en-la-quebrada-calamo.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-literal/talleres/El rescate de las alevines en la quebrada Cálamo ★★☆.pdf",
+            "src": "recursos/lectura-literal/talleres/el-rescate-de-las-alevines-en-la-quebrada-calamo.pdf",
             "nombreArchivo": "El rescate de los alevines en la quebrada Cálamo - Taller.pdf"
       },
       {
@@ -806,9 +860,9 @@ const CONFIG = {
             "dificultad": 3,
             "tema": "Sofía Samuel orquídeas laguna Guaitipán Pitalito Huila agua naturaleza investigación",
             "personaje": "Sofía, Samuel",
-            "imagen": "assets/miniaturas/El misterio de las orquídeas en la laguna de Guaitipán.jpg",
+            "imagen": "assets/miniaturas/el-misterio-de-las-orquideas-en-la-laguna-de-guaitipan.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-literal/lecturas/El misterio de las orquídeas en la laguna de Guaitipán ★★★.pdf",
+            "src": "recursos/lectura-literal/lecturas/el-misterio-de-las-orquideas-en-la-laguna-de-guaitipan.pdf",
             "nombreArchivo": "El misterio de las orquídeas en la laguna de Guaitipán.pdf"
       },
       {
@@ -819,9 +873,9 @@ const CONFIG = {
             "dificultad": 3,
             "tema": "taller Sofía Samuel orquídeas laguna Guaitipán Pitalito Huila agua naturaleza investigación",
             "personaje": "Sofía, Samuel",
-            "imagen": "assets/miniaturas/El misterio de las orquídeas en la laguna de Guaitipán.jpg",
+            "imagen": "assets/miniaturas/el-misterio-de-las-orquideas-en-la-laguna-de-guaitipan.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-literal/talleres/El misterio de las orquídeas en la laguna de Guaitipán ★★★.pdf",
+            "src": "recursos/lectura-literal/talleres/el-misterio-de-las-orquideas-en-la-laguna-de-guaitipan.pdf",
             "nombreArchivo": "El misterio de las orquídeas en la laguna de Guaitipán - Taller.pdf"
       },
       {
@@ -832,9 +886,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "Santiago Valentina cometa viento patio Pitalito paciencia observación",
             "personaje": "Santiago, Valentina",
-            "imagen": "assets/miniaturas/La cometa de Santiago.jpg",
+            "imagen": "assets/miniaturas/la-cometa-de-santiago.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-inferencial/lecturas/La cometa de Santiago ★☆☆.pdf",
+            "src": "recursos/lectura-inferencial/lecturas/la-cometa-de-santiago.pdf",
             "nombreArchivo": "La cometa de Santiago.pdf"
       },
       {
@@ -845,9 +899,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "taller Santiago Valentina cometa viento patio Pitalito paciencia observación",
             "personaje": "Santiago, Valentina",
-            "imagen": "assets/miniaturas/La cometa de Santiago.jpg",
+            "imagen": "assets/miniaturas/la-cometa-de-santiago.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-inferencial/talleres/La cometa de Santiago ★☆☆.pdf",
+            "src": "recursos/lectura-inferencial/talleres/la-cometa-de-santiago.pdf",
             "nombreArchivo": "La cometa de Santiago - Taller.pdf"
       },
       {
@@ -858,9 +912,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "Mariana abuela Cartagena nubes lluvia mar Caribe clima observar señales",
             "personaje": "Mariana, abuela",
-            "imagen": "assets/miniaturas/La nube sobre Cartagena.jpg",
+            "imagen": "assets/miniaturas/la-nube-sobre-cartagena.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-inferencial/lecturas/La nube sobre Cartagena ★☆☆.pdf",
+            "src": "recursos/lectura-inferencial/lecturas/la-nube-sobre-cartagena.pdf",
             "nombreArchivo": "La nube sobre Cartagena.pdf"
       },
       {
@@ -871,9 +925,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "taller Mariana abuela Cartagena nubes lluvia mar Caribe clima observar señales",
             "personaje": "Mariana, abuela",
-            "imagen": "assets/miniaturas/La nube sobre Cartagena.jpg",
+            "imagen": "assets/miniaturas/la-nube-sobre-cartagena.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-inferencial/talleres/La nube sobre Cartagena ★☆☆.pdf",
+            "src": "recursos/lectura-inferencial/talleres/la-nube-sobre-cartagena.pdf",
             "nombreArchivo": "La nube sobre Cartagena - Taller.pdf"
       },
       {
@@ -884,9 +938,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "Lucía Mateo escuela amistad compañera nueva empatía inclusión juego",
             "personaje": "Lucía, Mateo",
-            "imagen": "assets/miniaturas/La nueva compañera.jpg",
+            "imagen": "assets/miniaturas/la-nueva-companera.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-inferencial/lecturas/La nueva compañera ★☆☆.pdf",
+            "src": "recursos/lectura-inferencial/lecturas/la-nueva-companera.pdf",
             "nombreArchivo": "La nueva compañera.pdf"
       },
       {
@@ -897,9 +951,9 @@ const CONFIG = {
             "dificultad": 1,
             "tema": "taller Lucía Mateo escuela amistad compañera nueva empatía inclusión juego",
             "personaje": "Lucía, Mateo",
-            "imagen": "assets/miniaturas/La nueva compañera.jpg",
+            "imagen": "assets/miniaturas/la-nueva-companera.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-inferencial/talleres/La nueva compañera ★☆☆.pdf",
+            "src": "recursos/lectura-inferencial/talleres/la-nueva-companera.pdf",
             "nombreArchivo": "La nueva compañera - Taller.pdf"
       },
       {
@@ -910,9 +964,9 @@ const CONFIG = {
             "dificultad": 2,
             "tema": "don Julián mula Canela campesino costales café lluvia arroyo Pitalito responsabilidad",
             "personaje": "Don Julián, Canela",
-            "imagen": "assets/miniaturas/El campesino, la mula y costales de café.jpg",
+            "imagen": "assets/miniaturas/el-campesino-la-mula-y-costales-de-cafe.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-inferencial/lecturas/El campesino, la mula y costales de café ★★☆.pdf",
+            "src": "recursos/lectura-inferencial/lecturas/el-campesino-la-mula-y-costales-de-cafe.pdf",
             "nombreArchivo": "El campesino, la mula y los costales de café.pdf"
       },
       {
@@ -923,9 +977,9 @@ const CONFIG = {
             "dificultad": 2,
             "tema": "taller don Julián mula Canela campesino costales café lluvia arroyo Pitalito responsabilidad",
             "personaje": "Don Julián, Canela",
-            "imagen": "assets/miniaturas/El campesino, la mula y costales de café.jpg",
+            "imagen": "assets/miniaturas/el-campesino-la-mula-y-costales-de-cafe.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-inferencial/talleres/El campesino, la mula y los costales de café ★★☆.pdf",
+            "src": "recursos/lectura-inferencial/talleres/el-campesino-la-mula-y-los-costales-de-cafe.pdf",
             "nombreArchivo": "El campesino, la mula y los costales de café - Taller.pdf"
       },
       {
@@ -936,9 +990,9 @@ const CONFIG = {
             "dificultad": 3,
             "tema": "Samuel biblioteca libro pistas acertijos tesoro comprensión lectora escuela Pitalito",
             "personaje": "Samuel, profesora",
-            "imagen": "assets/miniaturas/El misterio del libro que escondía un tesoro.jpg",
+            "imagen": "assets/miniaturas/el-misterio-del-libro-que-escondia-un-tesoro.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-inferencial/lecturas/El misterio del libro que escondía un tesoro ★★★.pdf",
+            "src": "recursos/lectura-inferencial/lecturas/el-misterio-del-libro-que-escondia-un-tesoro.pdf",
             "nombreArchivo": "El misterio del libro que escondía un tesoro.pdf"
       },
       {
@@ -949,9 +1003,9 @@ const CONFIG = {
             "dificultad": 3,
             "tema": "taller Samuel biblioteca libro pistas acertijos tesoro comprensión lectora escuela Pitalito",
             "personaje": "Samuel, profesora",
-            "imagen": "assets/miniaturas/El misterio del libro que escondía un tesoro.jpg",
+            "imagen": "assets/miniaturas/el-misterio-del-libro-que-escondia-un-tesoro.jpg",
             "apertura": "pdf",
-            "src": "recursos/lectura-inferencial/talleres/El misterio del libro que escondía un tesoro ★★★.pdf",
+            "src": "recursos/lectura-inferencial/talleres/el-misterio-del-libro-que-escondia-un-tesoro.pdf",
             "nombreArchivo": "El misterio del libro que escondía un tesoro - Taller.pdf"
       },
       {
@@ -961,10 +1015,11 @@ const CONFIG = {
             "seccion": "videos",
             "tema": "consejos leer comprender texto estrategias lectura preguntas",
             "personaje": "Consejos para leer y comprender un texto",
-            "imagen": "assets/miniaturas-video/Consejos para leer y comprender un texto.jpg",
+            "imagen": "assets/miniaturas-video/consejos-para-leer-y-comprender-un-texto.jpg",
             "apertura": "video",
-            "src": "recursos/videos/Consejos para leer y comprender un texto.mp4",
-            "nombreArchivo": "Consejos para leer y comprender un texto.mp4"
+            "src": "recursos/videos/consejos-para-leer-y-comprender-un-texto.mp4",
+            "nombreArchivo": "Consejos para leer y comprender un texto.mp4",
+            "duracion": "2:00"
       },
       {
             "id": "video-3",
@@ -973,9 +1028,9 @@ const CONFIG = {
             "seccion": "videos",
             "tema": "gallina animales cuento narrado",
             "personaje": "La gallina Yina",
-            "imagen": "assets/miniaturas-video/La gallina Yina.jpg",
+            "imagen": "assets/miniaturas-video/la-gallina-yina.jpg",
             "apertura": "video",
-            "src": "recursos/videos/La gallina Yina.mp4",
+            "src": "recursos/videos/la-gallina-yina.mp4",
             "nombreArchivo": "La gallina Yina.mp4",
             "duracion": "1:30"
       },
@@ -986,10 +1041,11 @@ const CONFIG = {
             "seccion": "videos",
             "tema": "luna lluvia noche cielo cuento narrado",
             "personaje": "La pequeña luna y la lluvia",
-            "imagen": "assets/miniaturas-video/La pequeña luna y la lluvia.jpg",
+            "imagen": "assets/miniaturas-video/la-pequena-luna-y-la-lluvia.jpg",
             "apertura": "video",
-            "src": "recursos/videos/La pequeña luna y la lluvia.mp4",
-            "nombreArchivo": "La pequeña luna y la lluvia.mp4"
+            "src": "recursos/videos/la-pequena-luna-y-la-lluvia.mp4",
+            "nombreArchivo": "La pequeña luna y la lluvia.mp4",
+            "duracion": "3:48"
       },
       {
             "id": "video-1",
@@ -998,9 +1054,9 @@ const CONFIG = {
             "seccion": "videos",
             "tema": "cometa niño viento historia narrada",
             "personaje": "La cometa",
-            "imagen": "assets/miniaturas-video/La cometa.jpg",
+            "imagen": "assets/miniaturas-video/la-cometa.jpg",
             "apertura": "video",
-            "src": "recursos/videos/La cometa.mp4",
+            "src": "recursos/videos/la-cometa.mp4",
             "nombreArchivo": "La cometa.mp4",
             "duracion": "1:29"
       },
@@ -1011,9 +1067,9 @@ const CONFIG = {
             "seccion": "videos",
             "tema": "detective misterio observación pistas cuento narrado",
             "personaje": "La detective Susana",
-            "imagen": "assets/miniaturas-video/La detective Susana.jpg",
+            "imagen": "assets/miniaturas-video/la-detective-susana.jpg",
             "apertura": "video",
-            "src": "recursos/videos/La detective Susana.mp4",
+            "src": "recursos/videos/la-detective-susana.mp4",
             "nombreArchivo": "La detective Susana.mp4",
             "duracion": "1:19"
       },
@@ -1024,9 +1080,9 @@ const CONFIG = {
             "seccion": "videos",
             "tema": "gatita animales cuento narrado",
             "personaje": "La gatita Catalina",
-            "imagen": "assets/miniaturas-video/La gatita Catalina.jpg",
+            "imagen": "assets/miniaturas-video/la-gatita-catalina.jpg",
             "apertura": "video",
-            "src": "recursos/videos/La gatita Catalina.mp4",
+            "src": "recursos/videos/la-gatita-catalina.mp4",
             "nombreArchivo": "La gatita Catalina.mp4",
             "duracion": "1:39"
       },
@@ -1037,9 +1093,9 @@ const CONFIG = {
             "seccion": "videos",
             "tema": "Pancho cerdito alimentación cuento narrado",
             "personaje": "Pancho el glotón",
-            "imagen": "assets/miniaturas-video/Pancho el glotón.jpg",
+            "imagen": "assets/miniaturas-video/pancho-el-gloton.jpg",
             "apertura": "video",
-            "src": "recursos/videos/Pancho el glotón.mp4",
+            "src": "recursos/videos/pancho-el-gloton.mp4",
             "nombreArchivo": "Pancho el glotón.mp4",
             "duracion": "1:33"
       }
