@@ -1,24 +1,21 @@
-# Repositorio de Comprensión Lectora — 2.º grado
+# Repositorio de Comprensión Lectora · 2.º grado de primaria
 
-## Contenido del paquete
-- `index.html`: repositorio web con sus funciones y recursos gráficos de la interfaz incrustados.
-- `assets/miniaturas/`: tres miniaturas optimizadas, una por cada lectura literal.
-- `recursos/lectura-literal/lecturas/`: los tres PDF de lecturas.
-- `recursos/lectura-literal/talleres/`: los tres PDF de talleres relacionados.
+Sitio estático listo para publicarse con GitHub Pages. El archivo de entrada es `index.html`.
 
-## Contenido inicial
-- Lectura literal / Lecturas: tres recursos, cada uno con dificultad de una estrella.
-- Lectura literal / Talleres: tres talleres descargables.
-- Lectura inferencial, Videos y las demás colecciones continúan vacías.
+## Recursos incluidos
 
-## Probar localmente
-Mantén las carpetas en esta misma estructura y abre `index.html` en el navegador. Si el navegador bloquea alguna descarga al abrir mediante `file://`, prueba la versión publicada mediante GitHub Pages.
+- Comprensión literal: cinco lecturas y sus cinco talleres.
+- Comprensión inferencial: cinco lecturas y sus cinco talleres.
+- Videos: cinco videos MP4 con miniaturas de vista previa.
+- Las lecturas y sus talleres comparten la misma miniatura y el mismo nombre de presentación.
+- Los PDF se pueden abrir dentro del repositorio en una ventana emergente o descargar desde su tarjeta.
+- Los videos se reproducen dentro de una ventana emergente con controles del reproductor y no tienen botón de descarga en las tarjetas.
 
-## Publicar en GitHub Pages
-1. Crea o abre el repositorio de GitHub donde vas a publicar la página.
-2. Sube `index.html`, `assets/`, `recursos/` y `.nojekyll` a la raíz del repositorio (no subas solo el HTML).
-3. En Settings → Pages, selecciona la rama `main` y la carpeta raíz (`/(root)`).
-4. Cuando GitHub Pages publique el sitio, abre el enlace y prueba las seis descargas.
+## Publicación
 
-## Importante
-Los materiales de este paquete son archivos separados del HTML para facilitar las descargas y evitar que el archivo principal crezca innecesariamente. Los PDF se descargan mediante botones de tarjeta y no se incrustan dentro de la página. Los favoritos y el registro de visitas del proyecto siguen dependiendo del almacenamiento local de cada navegador; no se sincronizan centralmente entre dispositivos.
+1. Copia el contenido de esta carpeta a la raíz de tu repositorio de GitHub.
+2. En GitHub, abre **Settings → Pages**.
+3. Selecciona **Deploy from a branch**, la rama `main` y la carpeta `/(root)`.
+4. Guarda los cambios y espera a que GitHub Pages publique el sitio.
+
+Los favoritos y el registro local de visitas mantienen el comportamiento del repositorio anterior: se guardan en el navegador de cada dispositivo.
