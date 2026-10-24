@@ -513,6 +513,41 @@ br.br{display:inline}
 }
 @media (max-width:380px){.acciones-recurso{grid-template-columns:1fr}.rec .abrir,.rec .descargar{padding:6px 3px}}
 
+
+/* ============================================================
+   MINIATURAS CUADRADAS (lecturas y talleres) Y ESTRELLAS DE DIFICULTAD
+   Los videos conservan su miniatura actual (.rec-video).
+   ============================================================ */
+.rec.rec-doc .img{width:100%;height:auto;aspect-ratio:1 / 1;background-size:cover;background-position:center}
+.rec .estr{display:flex;align-items:center;justify-content:center;gap:5px;min-height:0;line-height:0;letter-spacing:0;margin-top:auto}
+.rec .estr .estr-img{display:block;height:clamp(24px,2.1vw,30px);width:auto;flex:none}
+@media (max-width:820px){.rec .estr .estr-img{height:clamp(24px,6.2vw,30px)}}
+.rec h4{min-height:2.4em;text-align:left}
+.rec .cuerpo{gap:6px}
+.rec .abrir,.rec .descargar{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 4px;border-radius:14px;font-size:clamp(12px,.9vw,14.5px);transition:transform .12s,background .12s,box-shadow .12s}
+.rec .abrir{background:linear-gradient(#1a82ef,#0a62c9);border:2px solid #0a62c9;box-shadow:0 3px 0 #064b9a;box-sizing:border-box}
+.rec .descargar{box-sizing:border-box}
+.rec .acciones-recurso{align-items:stretch}
+.rec .abrir:hover{background:linear-gradient(#2a8ef5,#0b6bd8);transform:translateY(-1px)}
+.rec .abrir:active{transform:translateY(2px);box-shadow:0 1px 0 #064b9a}
+.rec .descargar{background:#eaf5ff;color:#064b9a;border:2px solid #7fb8f0}
+.rec .descargar:hover{background:#d6ebff;border-color:#4a9ae8;transform:translateY(-1px)}
+.rec .descargar:active{transform:translateY(1px);background:#c5e1fc}
+.rec .abrir:focus-visible,.rec .descargar:focus-visible{outline:3px solid #ffc83d;outline-offset:2px}
+.rec .ico-btn{width:1.15em;height:1.15em;flex:none}
+@media (max-width:380px){.rec .abrir,.rec .descargar{font-size:12px}}
+@media (min-width:821px) and (max-width:1299px){.rec .ico-btn{display:none}.rec .abrir,.rec .descargar{font-size:clamp(11.5px,1.05vw,13.5px);padding:8px 2px}}
+@media (min-width:1000px) and (min-height:520px){
+  .rejilla{grid-template-columns:repeat(5,minmax(0,1fr));width:100%;max-width:none;margin:0}
+  .zona.lista{overflow:hidden;container-type:size}
+  .rejilla{--cuerpo:calc(2*clamp(8px,.8vw,12px) + 2.5*clamp(13px,1.02vw,17px)*1.12 + clamp(24px,2.1vw,30px) + 12px + 40px + 6px + 10px);--lado:max(80px,calc(100cqh - var(--cuerpo) - 6px))}
+  .rec.rec-doc .img{width:min(calc(100% - 12px),var(--lado));margin:6px auto 0;border-radius:14px}
+}
+@media (max-width:1599px){.rec .ico-btn{display:none}}
+.rec h4{display:block;-webkit-line-clamp:unset;overflow:visible;min-height:0;overflow-wrap:break-word;word-break:normal}
+.rec .img.sin-img{background-image:none!important;background-color:#e7f2fc}
+.rec .img.sin-img::after{content:"📖";font-size:44px;display:grid;place-items:center;height:100%}
+.rec .sonda{display:none}
 </style>
 </head>
 <body>
@@ -1122,6 +1157,9 @@ function construirMarco(){
    VISTAS (solo cambia el contenido central)
    ============================================================ */
 function estrellas(n){ return '★'.repeat(n)+'☆'.repeat(3-n); }
+/* Dificultad editorial 1-3; las tarjetas usan las MISMAS imágenes de estrellas que la leyenda «Nivel de dificultad» */
+const NIVELES_DIF = {1:'Fácil', 2:'Intermedio', 3:'Avanzado'};
+const nivelDif = r => Math.min(3, Math.max(1, parseInt(r.dificultad,10) || 1));
 const LEYENDA = `<div class="dificultad"><b>Nivel de dificultad:</b>
   <span class="nivel"><img src="${IMG[`estrellas-1`]}" alt="★☆☆">Fácil</span><span class="nivel"><img src="${IMG[`estrellas-2`]}" alt="★★☆">Intermedio</span><span class="nivel"><img src="${IMG[`estrellas-3`]}" alt="★★★">Avanzado</span></div>`;
 /* Corazón amarillo único para todos los favoritos (guardado = relleno dorado; no guardado = relleno pálido; misma silueta) */
@@ -1135,19 +1173,32 @@ function vacio(clave, titulo, texto){
   return `<div class="vacio v-${clave}"><div class="arte tam-${clave}"><img src="${IMG[`vacio-${clave}`]}" alt=""></div><h3>${titulo}</h3><p>${texto}</p></div>`;
 }
 
+/* Si una miniatura no carga (p. ej. nombre con tildes en distinta normalización Unicode), prueba variantes de la ruta antes de rendirse */
+function repararMiniatura(sonda){
+  const caja = sonda.parentElement, original = decodeURI(sonda.getAttribute('src'));
+  const cand = [original.normalize('NFC'), original.normalize('NFD'), original.split('/').map(encodeURIComponent).join('/')];
+  const probar = i=>{
+    if(i>=cand.length){ caja.classList.add('sin-img'); console.warn('Miniatura no encontrada:', original); return; }
+    const t = new Image();
+    t.onload = ()=>{ caja.style.backgroundImage = `url("${cand[i]}")`; };
+    t.onerror = ()=>probar(i+1);
+    t.src = i===2 ? cand[i] : encodeURI(cand[i]);
+  };
+  probar(0);
+}
 function tarjetaRecurso(r){
   const fav = Favs.tiene(r.id);
   const ico = r.tipo==='video'?'▶':(r.tipo==='taller'?'✎':'▤');
   const portada = r.imagen
-    ? `<div class="img" role="img" aria-label="Vista previa de ${esc(r.titulo)}" style="background-image:url('${esc(encodeURI(r.imagen))}')"></div>`
+    ? `<div class="img" role="img" aria-label="Vista previa de ${esc(r.titulo)}" style="background-image:url('${esc(encodeURI(r.imagen))}')"><img class="sonda" src="${esc(encodeURI(r.imagen))}" alt="" onerror="repararMiniatura(this)" hidden></div>`
     : `<div class="img" aria-hidden="true">${ico}</div>`;
   const etiqueta = r.tipo==='video'
     ? `<span class="tipo-recurso">Video${r.duracion ? ' · '+esc(r.duracion) : ''}</span>`
-    : `<span class="estr" title="Nivel de dificultad: ${estrellas(r.dificultad||1)}">${estrellas(r.dificultad||1)}</span>`;
+    : `<span class="estr" title="Nivel de dificultad: ${NIVELES_DIF[nivelDif(r)]}" role="img" aria-label="Nivel de dificultad: ${NIVELES_DIF[nivelDif(r)]} (${estrellas(nivelDif(r))})">${Array.from({length:nivelDif(r)},()=>`<img class="estr-img" src="${IMG['estrellas-1']}" alt="">`).join('')}</span>`;
   const botones = r.tipo==='video'
     ? `<button class="abrir solo-video" type="button" data-abrir="${esc(r.id)}">Ver video</button>`
-    : `<div class="acciones-recurso"><button class="abrir" type="button" data-abrir="${esc(r.id)}">Abrir</button><button class="descargar" type="button" data-descargar="${esc(r.id)}">Descargar</button></div>`;
-  return `<article class="rec">${portada}
+    : `<div class="acciones-recurso"><button class="abrir" type="button" data-abrir="${esc(r.id)}"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 12S5.5 4.5 12 4.5 22.5 12 22.5 12 18.5 19.5 12 19.5 1.5 12 1.5 12z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg><span>Abrir</span></button><button class="descargar" type="button" data-descargar="${esc(r.id)}"><svg class="ico-btn" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0-4.5-4.5M12 14l4.5-4.5M4 17v2.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V17" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Descargar</span></button></div>`;
+  return `<article class="rec ${r.tipo==='video'?'rec-video':'rec-doc'}">${portada}
     <button class="fav" type="button" data-fav="${esc(r.id)}" aria-pressed="${fav}" aria-label="${fav?'Quitar de favoritos':'Guardar en favoritos'}">${CORAZON(fav)}</button>
     <div class="cuerpo"><h4 title="${esc(r.titulo)}">${esc(r.titulo)}</h4>${etiqueta}${botones}</div></article>`;
 }
